@@ -126,7 +126,7 @@ function HomeScreen({ navigation }) {
 
     const getProfessores = async () => {
       try {
-        const response = await fetch('http://localhost:8080/projeto-evento/professor-json.php');
+        const response = await fetch('http://localhost/projeto-evento/professor-json.php');
         const json = await response.json();
         setData(json.professor);
       } catch (error) {
@@ -192,7 +192,7 @@ function HomeScreen({ navigation }) {
   const verificar = ()=>{   
     const valores = professor
 
-    fetch('http://localhost:8080/projeto-evento/professor-inserir.php', {
+    fetch('http://localhost/projeto-evento/professor-inserir.php', {
       method: 'post',
       header:{
         'Accept': 'application/json',
@@ -306,7 +306,7 @@ function cadastroAluno({navigation}){
       const valores = aluno;
 
 
-      fetch('http://localhost:8080/projeto-evento/aluno-inserir.php', {
+      fetch('http://localhost/projeto-evento/aluno-inserir.php', {
         method: 'post',
         header:{
           'Accept': 'application/json',
@@ -384,7 +384,7 @@ function ConsultaAluno({navigation}){
 
   const consultarAluno = async () => {
     try {
-      const response = await fetch('http://localhost:8080/projeto-evento/aluno-json.php');
+      const response = await fetch('http://localhost/projeto-evento/aluno-json.php');
       const json = await response.json();
       setData(json.aluno);
     } catch (error) {
@@ -449,7 +449,7 @@ function ConsultaAluno({navigation}){
   
     const pesquisar = async () => {
       try {
-        const response = await axios.get(`http://localhost:8080/projeto-evento/aluno-param.php?nome=${nome}`);
+        const response = await axios.get(`http://localhost/projeto-evento/aluno-param.php?nome=${nome}`);
         setResultados(response.data.aluno);
       } catch (error) {
         console.error(error);
@@ -515,7 +515,7 @@ function ConsultaAluno({navigation}){
 
   const pesquisar = async () => {
     try {
-      const response = await axios.get(`http://localhost:8080/projeto-evento/professor-param.php?nome=${nome}`);
+      const response = await axios.get(`http://localhost/projeto-evento/professor-param.php?nome=${nome}`);
       setResultados(response.data.professor);
     } catch (error) {
       console.error(error);
@@ -621,18 +621,20 @@ function inserirConvidado ({navigation}){
   const verificar = ()=>{   
     const valores = convidado
 
-    fetch('http://localhost:8080/projeto-evento/professor-inserir.php', {
+    fetch('http://localhost/projeto-evento/convidado-inserir.php', {
       method: 'post',
-      header:{
+      headers:{
         'Accept': 'application/json',
         'Content-type': 'application/json'
       },
       body:JSON.stringify({
-        convidado: convidado,       
+        convidado: convidado      
       })      
     })
     setDados(valores)        
   } 
+
+  
 
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
@@ -679,7 +681,7 @@ function consultarConvidado ({navigation}){
 
   const consultarConvidado = async () => {
     try {
-      const response = await fetch('http://localhost:8080/projeto-evento/convidado-json.php');
+      const response = await fetch('http://localhost/projeto-evento/convidado-json.php');
       const json = await response.json();
       setData(json.convidado);
     } catch (error) {
